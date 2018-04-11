@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
+
 app.use(function(req,res,next){
     var now = new Date().toString();
     var log = now +' '+ req.method + ' ' +req.url + '\n';
@@ -45,6 +46,12 @@ app.get('/about', function (req, res) {
 app.get('/bad', function (req, res) {
     res.send({
         errorMessage: 'Uable to Fulfil this request'
+    });
+});
+
+app.get('/portfolio',function(req,res){
+    res.render('portfolio.hbs',{
+        title:'Porfolio page'
     });
 });
 
